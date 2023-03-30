@@ -1,0 +1,31 @@
+<%- include('partials/header.html') %> <!--INCLUDE FEITO PELO EJS-->
+
+    <section class="other-news">
+        <div class="title-other-news">
+            <h2>Resultados</h2>
+            <br/>
+            <div class="center">
+
+                <div style="width: 100%;"  class="most-viewed">
+                    <div class="most-viewed-title">
+                        <h3><%= contagem %> resultados encontrados</h3>
+                    </div>
+                    <% for (let i = 0; i < news.length; i++) { %>
+                    <div class="box-most-viewed">
+                        <img src="<%= news[i].image %>" alt="Notícia mais vista">
+                        <div class="box-most-viewed-content">
+                            <h3 class="box-most-viewed-category"><%= news[i].title %></h3>
+                            <p class="box-most-viewed-half-news"><%- news[i].shortContent %>...</p>
+                            <a href="/<%= news[i].slug %>">Ler mais</a>
+                        </div><!--conteudo da box sem a imagem-->
+                    </div><!--box das notícias mais vistas-->
+                    <% } %>
+                </div><!--notícias mais vistas-->
+            </div><!--center-->
+        </div><!--título de outras notícias-->
+    </section><!--outras notícias-->
+
+    <script src="../public/script.js"></script>
+    <%- include('partials/footer.html') %>
+</body>
+</html>

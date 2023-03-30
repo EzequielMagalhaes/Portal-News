@@ -1,0 +1,57 @@
+<%- include('partials/header.html') %> <!--INCLUDE FEITO PELO EJS-->
+
+    <section class="featured-news">
+        <div class="center">
+            <div class="featured-img">
+                <div class="featured-overlay"></div><!--div vazia-->
+                <div class="featured-title-description">
+                    <a href="<%= news[0].slug %>">
+                        <h2><%= news[0].title %></h2>
+                        <p><%- news[0].shortContent %> ...</p>
+                    </a>
+                </div><!--título da notícia destaque-->
+                <img src="<%= news[0].image %>" alt="Notícia destaque"/>
+            </div><!--img da notícia destaque-->
+        </div><!--center-->
+    </section><!--notícias em destaque-->
+
+    <section class="other-news">
+        <div class="title-other-news">
+            <h2>Últimas notícias</h2>
+            <br/>
+            <div class="center">
+                <div class="last-news">
+                    <% for (let i = 1; i < news.length; i++) { %> <!--renderização de forma dinâmica EJS-->
+                    <div class="box-last-news">
+                        <img src="<%= news[i].image %>" alt="Últimas notícias"/>
+                        <div class="box-last-news-content">
+                            <h3 class="box-last-news-category"><%= news[i].category %></h3>
+                            <h2 class="box-last-news-title"><%= news[i].title %></h2>
+                            <p class="box-last-news-half-news"><%- news[i].shortContent %> ...</p>
+                            <a href="/<%= news[i].slug %>">Ler mais</a>
+                        </div><!--conteúdo da box sem a imagem-->
+                    </div><!--box das últimas notícias-->
+                    <% } %>
+                </div><!--últimas notícias-->
+
+                <div class="most-viewed">
+                    <div class="most-viewed-title">
+                        <h3>Mais Lidas</h3>
+                    </div>
+                    <% for (let i = 0; i < newsTop.length; i++) { %>
+                    <div class="box-most-viewed">
+                        <img src="<%= newsTop[i].image %>" alt="Notícia mais vista">
+                        <div class="box-most-viewed-content">
+                            <h3 class="box-most-viewed-category"><%= newsTop[i].category %></h3>
+                            <p class="box-most-viewed-half-news"><%- newsTop[i].shortContent %>...<br/><span>(<%= newsTop[i].views %> visualizações)</span></p>
+                            <a href="/<%= newsTop[i].slug %>">Ler mais</a>
+                        </div><!--conteudo da box sem a imagem-->
+                    </div><!--box das notícias mais vistas-->
+                    <% } %>
+                </div><!--notícias mais vistas-->
+            </div><!--center-->
+        </div><!--título de outras notícias-->
+    </section><!--outras notícias-->
+
+    <script src="../public/script.js"></script>
+    <%- include('partials/footer.html') %>

@@ -1,0 +1,53 @@
+<%- include('partials/header.html') %>
+
+<section class="news">
+    <div class="center">
+        <div class="news-single">
+            <h2><%= news.title%></h2>
+                <div class="author">
+                    <img src="../public/images/EzequielFoto.jpeg" alt="imagem do autor">
+                    <span>por <%= news.author%></span>
+                    <div class="author-content">
+                        <button onclick="like()">
+                            <i id="bookmark" class="bi bi-bookmark"></i>
+                            <i id="bookmarkFilled" class="bi bi-bookmark-fill" style="display:none"></i>
+                        </button>
+                    </div>
+                </div>
+                <br/>
+                <img src="<%= news.image%>" alt="Imagem da notícia">
+                <br/>
+                <%- news.content %>
+           </div><!--noticia single-->
+
+        <div class="most-viewed">
+            <div class="most-viewed-title">
+                <h3>Mais Lidas</h3>
+            </div>
+            <% for (let i = 0; i < newsTop.length; i++) { %>
+            <div class="box-most-viewed">
+                <img src="<%= newsTop[i].image %>" alt="Notícia mais vista">
+                <div class="box-most-viewed-content">
+                    <h3 class="box-most-viewed-category"><%= newsTop[i].category %></h3>
+                    <p class="box-most-viewed-half-news"><%- newsTop[i].shortContent %>...<br/><span>(<%= newsTop[i].views %> visualizações)</span></p>
+                    <a href="/<%= newsTop[i].slug %>">Ler mais</a>
+                </div><!--conteudo da box sem a imagem-->
+            </div><!--box das notícias mais vistas-->
+            <% } %>
+        </div><!--notícias mais vistas-->
+    </div><!--center-->
+</section>
+
+<style> 
+.news-single li{
+    color: #7B8591;
+    font-size: 15px;
+    margin: 8px 50px;
+}
+.news-single img{
+    max-width: 100%;
+    border-radius: 20px;
+}
+</style><!--separado do arquivo fonte css... para nao precisar criar outro, nem dar conflito com qualquer outra notícia futura-->
+<script src="../public/script.js"></script>
+<%- include('partials/footer.html') %>
